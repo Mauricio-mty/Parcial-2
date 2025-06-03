@@ -5,8 +5,9 @@ import lombok.Data;
 
 @Data
 public class RegisterBookDto {
-    @NotBlank
-    @NotNull
+    @NotBlank(message = "Title cannot be blank")
+    @NotNull(message = "Title cannot be null")
+    @Pattern(regexp = "^[^0-9]*$")
     private String title;
 
     @NotBlank
@@ -15,8 +16,7 @@ public class RegisterBookDto {
 
     @NotBlank
     @NotNull
-    @Pattern(regexp = "^(?:ISBN(?:-13)?:? )?(?=[0-9]{13}$|(?=(?:[0-9]+[- ]){4})[- 0-9]{17}$)\n" +
-            "97[89][- ]?[0-9]{1,5}[- ]?[0-9]+[- ]?[0-9]+[- ]?[0-9]$")
+    @Pattern(regexp = "^(?:ISBN(?:-13)?:? )?(?=[0-9]{13}$|(?=(?:[0-9]+[- ]){4})[- 0-9]{17}$)97[89][- ]?[0-9]{1,5}[- ]?[0-9]+[- ]?[0-9]+[- ]?[0-9]$")
     private String isbn;
 
     @NotNull
